@@ -48,6 +48,7 @@ export async function request<D>(httpConfig: IHttpConfig<D>){
       }
    }
    catch(error){
-      return {status: 'error', message: error.getMessage()};
+      const errorMessage = (error as Error).message; // Type assertion to 'Error'
+      return { status: 'error', message: errorMessage };
    }
 }
